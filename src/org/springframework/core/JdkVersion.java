@@ -23,9 +23,13 @@ package org.springframework.core;
  *
  * <p>Note that Spring requires JVM 1.4 or higher, as of Spring 2.5.
  *
+ * <p>Sweco SEMARA: Spring 2.5.6 JdkVersion class,
+ * with added JDK8 (1.8)-JDK15 (1.15) compatibility.
+ *
  * @author Rod Johnson
  * @author Juergen Hoeller
  * @author Rick Evans
+ * @author Martin Kalén
  */
 public abstract class JdkVersion {
 
@@ -54,6 +58,45 @@ public abstract class JdkVersion {
 	 */
 	public static final int JAVA_17 = 4;
 
+	/**
+	 * Sweco: Constant identifying the 1.8 JVM (Java 8).
+	 */
+	public static final int JAVA_18 = 5;
+
+	/**
+	 * Sweco: Constant identifying the 1.9 JVM (Java 9).
+	 */
+	public static final int JAVA_19 = 6;
+
+	/**
+	 * Sweco: Constant identifying the 10 JVM (Java 10).
+	 */
+	public static final int JAVA_100 = 7;
+
+	/**
+	 * Sweco: Constant identifying the 11 JVM (Java 11).
+	 */
+	public static final int JAVA_110 = 8;
+
+	/**
+	 * Sweco: Constant identifying the 12 JVM (Java 12).
+	 */
+	public static final int JAVA_120 = 9;
+
+	/**
+	 * Sweco: Constant identifying the 13 JVM (Java 13).
+	 */
+	public static final int JAVA_130 = 10;
+
+	/**
+	 * Sweco: Constant identifying the 14 JVM (Java 14).
+	 */
+	public static final int JAVA_140 = 11;
+
+	/**
+	 * Sweco: Constant identifying the 15 JVM (Java 15).
+	 */
+	public static final int JAVA_150 = 12;
 
 	private static final String javaVersion;
 
@@ -62,7 +105,31 @@ public abstract class JdkVersion {
 	static {
 		javaVersion = System.getProperty("java.version");
 		// version String should look like "1.4.2_10"
-		if (javaVersion.indexOf("1.7.") != -1) {
+		if (javaVersion.equals("15") || javaVersion.startsWith("15.")) {
+			majorJavaVersion = JAVA_150;
+		}
+		else if (javaVersion.equals("14") || javaVersion.startsWith("14.")) {
+			majorJavaVersion = JAVA_140;
+		}
+		else if (javaVersion.equals("13") || javaVersion.startsWith("13.")) {
+			majorJavaVersion = JAVA_130;
+		}
+		else if (javaVersion.equals("12") || javaVersion.startsWith("12.")) {
+			majorJavaVersion = JAVA_120;
+		}
+		else if (javaVersion.equals("11") || javaVersion.startsWith("11.")) {
+			majorJavaVersion = JAVA_110;
+		}
+		else if (javaVersion.equals("10") || javaVersion.startsWith("10.")) {
+			majorJavaVersion = JAVA_100;
+		}
+		else if (javaVersion.indexOf("1.9.") != -1) {
+			majorJavaVersion = JAVA_19;
+		}
+		else if (javaVersion.indexOf("1.8.") != -1) {
+			majorJavaVersion = JAVA_18;
+		}
+		else if (javaVersion.indexOf("1.7.") != -1) {
 			majorJavaVersion = JAVA_17;
 		}
 		else if (javaVersion.indexOf("1.6.") != -1) {

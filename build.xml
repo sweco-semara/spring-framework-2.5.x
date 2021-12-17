@@ -443,9 +443,9 @@
 
 	<target name="fulljar" depends="build,initdist" description="Create JAR file with all core Spring classes">
 
-		<delete file="${dist.dir}/spring.jar"/>
+		<delete file="${dist.dir}/spring-${spring-version}.jar"/>
 
-		<jarjar jarfile="${dist.dir}/spring.jar">
+		<jarjar jarfile="${dist.dir}/spring-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.full.packages"/>
 			</fileset>
@@ -465,9 +465,9 @@
 
 	<target name="fullsources" depends="initdist" description="Create source JAR file with all core Spring classes">
 
-		<delete file="${dist.dir}/spring-sources.jar"/>
+		<delete file="${dist.dir}/spring-sources-${spring-version}.jar"/>
 
-		<jar jarfile="${dist.dir}/spring-sources.jar">
+		<jar jarfile="${dist.dir}/spring-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.full.packages"/>
 			</fileset>
@@ -495,7 +495,7 @@
 			</fileset>
 		</delete>
 
-		<jar jarfile="${dist.dir}/modules/spring-aop.jar">
+		<jar jarfile="${dist.dir}/modules/spring-aop-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.aop.packages"/>
 			</fileset>
@@ -508,7 +508,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-beans.jar">
+		<jar jarfile="${dist.dir}/modules/spring-beans-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.beans.packages"/>
 			</fileset>
@@ -521,7 +521,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-context.jar">
+		<jar jarfile="${dist.dir}/modules/spring-context-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.context.packages"/>
 			</fileset>
@@ -534,7 +534,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-context-support.jar">
+		<jar jarfile="${dist.dir}/modules/spring-context-support-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.context.support.packages"/>
 			</fileset>
@@ -546,7 +546,7 @@
 			</manifest>
 		</jar>
 
-		<jarjar jarfile="${dist.dir}/modules/spring-core.jar">
+		<jarjar jarfile="${dist.dir}/modules/spring-core-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.core.packages"/>
 			</fileset>
@@ -561,7 +561,7 @@
 			</manifest>
 		</jarjar>
 
-		<jar jarfile="${dist.dir}/modules/spring-jdbc.jar">
+		<jar jarfile="${dist.dir}/modules/spring-jdbc-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.jdbc.packages"/>
 			</fileset>
@@ -573,7 +573,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-jms.jar">
+		<jar jarfile="${dist.dir}/modules/spring-jms-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.jms.packages"/>
 			</fileset>
@@ -586,7 +586,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-orm.jar">
+		<jar jarfile="${dist.dir}/modules/spring-orm-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.orm.packages"/>
 			</fileset>
@@ -598,7 +598,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-test.jar">
+		<jar jarfile="${dist.dir}/modules/spring-test-${spring-version}.jar">
 			<fileset dir="${target.mockclasses.dir}">
 				<patternset refid="spring.test.packages"/>
 			</fileset>
@@ -610,7 +610,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-tx.jar">
+		<jar jarfile="${dist.dir}/modules/spring-tx-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.tx.packages"/>
 			</fileset>
@@ -623,7 +623,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-web.jar">
+		<jar jarfile="${dist.dir}/modules/spring-web-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.web.packages"/>
 			</fileset>
@@ -635,7 +635,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-webmvc.jar">
+		<jar jarfile="${dist.dir}/modules/spring-webmvc-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.webmvc.packages"/>
 			</fileset>
@@ -647,7 +647,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-webmvc-portlet.jar">
+		<jar jarfile="${dist.dir}/modules/spring-webmvc-portlet-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.webmvc.portlet.packages"/>
 			</fileset>
@@ -659,7 +659,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/modules/spring-webmvc-struts.jar">
+		<jar jarfile="${dist.dir}/modules/spring-webmvc-struts-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.webmvc.struts.packages"/>
 			</fileset>
@@ -685,75 +685,75 @@
 		<taskdef resource="com/springsource/bundlor/ant/antlib.xml" uri="antlib:com.springsource.bundlor.ant"
 				classpathref="bundlor-classpath"/>
 		
-		<bundlor:bundlor bundlePath="${dist.dir}/weaving/spring-agent.jar" outputPath="${dist.dir}/weaving/spring-agent.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/weaving/spring-agent-${spring-version}.jar" outputPath="${dist.dir}/weaving/spring-agent-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.instrument.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-aop.jar" outputPath="${dist.dir}/modules/spring-aop.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-aop-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-aop-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.aop.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/weaving/spring-aspects.jar" outputPath="${dist.dir}/weaving/spring-aspects.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/weaving/spring-aspects-${spring-version}.jar" outputPath="${dist.dir}/weaving/spring-aspects-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.aspects.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-beans.jar" outputPath="${dist.dir}/modules/spring-beans.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-beans-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-beans-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.beans.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-context.jar" outputPath="${dist.dir}/modules/spring-context.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-context-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-context-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.context.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-context-support.jar" outputPath="${dist.dir}/modules/spring-context-support.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-context-support-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-context-support-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.context.support.mf"/>
 				
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-core.jar" outputPath="${dist.dir}/modules/spring-core.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-core-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-core-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.core.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-jdbc.jar" outputPath="${dist.dir}/modules/spring-jdbc.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-jdbc-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-jdbc-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.jdbc.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-jms.jar" outputPath="${dist.dir}/modules/spring-jms.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-jms-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-jms-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.jms.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-orm.jar" outputPath="${dist.dir}/modules/spring-orm.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-orm-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-orm-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.orm.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-test.jar" outputPath="${dist.dir}/modules/spring-test.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-test-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-test-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.test.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/weaving/spring-tomcat-weaver.jar" outputPath="${dist.dir}/weaving/spring-tomcat-weaver.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/weaving/spring-tomcat-weaver-${spring-version}.jar" outputPath="${dist.dir}/weaving/spring-tomcat-weaver-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.instrument.classloading.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-tx.jar" outputPath="${dist.dir}/modules/spring-tx.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-tx-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-tx-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.transaction.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-web.jar" outputPath="${dist.dir}/modules/spring-web.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-web-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-web-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.web.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-webmvc-portlet.jar" outputPath="${dist.dir}/modules/spring-webmvc-portlet.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-webmvc-portlet-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-webmvc-portlet-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.web.portlet.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-webmvc.jar" outputPath="${dist.dir}/modules/spring-webmvc.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-webmvc-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-webmvc-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.web.servlet.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-webmvc-struts.jar" outputPath="${dist.dir}/modules/spring-webmvc-struts.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/modules/spring-webmvc-struts-${spring-version}.jar" outputPath="${dist.dir}/modules/spring-webmvc-struts-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.web.struts.mf"/>
 
-		<bundlor:bundlor bundlePath="${dist.dir}/spring.jar" outputPath="${dist.dir}/spring.jar"
+		<bundlor:bundlor bundlePath="${dist.dir}/spring-${spring-version}.jar" outputPath="${dist.dir}/spring-${spring-version}.jar"
 				mergeExistingHeaders="true" bundleVersion="${spring-version-osgi}"
 				manifestTemplatePath="${bundlor.mf.dir}/org.springframework.mf"/>
 
@@ -767,7 +767,7 @@
 			</fileset>
 		</delete>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-aop-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-aop-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.aop.packages"/>
 			</fileset>
@@ -783,7 +783,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-beans-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-beans-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.beans.packages"/>
 			</fileset>
@@ -799,7 +799,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-context-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-context-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.context.packages"/>
 			</fileset>
@@ -815,7 +815,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-context-support-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-context-support-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.context.support.packages"/>
 			</fileset>
@@ -830,7 +830,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-core-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-core-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.core.packages"/>
 			</fileset>
@@ -845,7 +845,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-jdbc-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-jdbc-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.jdbc.packages"/>
 			</fileset>
@@ -860,7 +860,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-jms-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-jms-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.jms.packages"/>
 			</fileset>
@@ -876,7 +876,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-orm-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-orm-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.orm.packages"/>
 			</fileset>
@@ -891,7 +891,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-test-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-test-sources-${spring-version}.jar">
 			<fileset dir="${mock.dir}">
 				<patternset refid="spring.test.packages"/>
 			</fileset>
@@ -906,7 +906,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-tx-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-tx-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.tx.packages"/>
 			</fileset>
@@ -922,7 +922,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-web-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-web-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.web.packages"/>
 			</fileset>
@@ -937,7 +937,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-webmvc-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-webmvc-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.webmvc.packages"/>
 			</fileset>
@@ -952,7 +952,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-webmvc-portlet-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-webmvc-portlet-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.webmvc.portlet.packages"/>
 			</fileset>
@@ -967,7 +967,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/module-sources/spring-webmvc-struts-sources.jar">
+		<jar jarfile="${dist.dir}/module-sources/spring-webmvc-struts-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.webmvc.struts.packages"/>
 			</fileset>
@@ -993,7 +993,7 @@
 			</fileset>
 		</delete>
 
-		<jar jarfile="${dist.dir}/weaving/spring-agent.jar">
+		<jar jarfile="${dist.dir}/weaving/spring-agent-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.agent.packages"/>
 			</fileset>
@@ -1006,7 +1006,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/weaving/spring-aspects.jar">
+		<jar jarfile="${dist.dir}/weaving/spring-aspects-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.aspects.packages"/>
 			</fileset>
@@ -1018,7 +1018,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/weaving/spring-tomcat-weaver.jar">
+		<jar jarfile="${dist.dir}/weaving/spring-tomcat-weaver-${spring-version}.jar">
 			<fileset dir="${target.classes.dir}">
 				<patternset refid="spring.tomcat.weaver.packages"/>
 			</fileset>
@@ -1041,7 +1041,7 @@
 			</fileset>
 		</delete>
 
-		<jar jarfile="${dist.dir}/weaving-sources/spring-aspects-sources.jar">
+		<jar jarfile="${dist.dir}/weaving-sources/spring-aspects-sources-${spring-version}.jar">
 			<fileset dir="${aspectj.src.dir}">
 				<patternset refid="spring.aspects.packages"/>
 			</fileset>
@@ -1053,7 +1053,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/weaving-sources/spring-agent-sources.jar">
+		<jar jarfile="${dist.dir}/weaving-sources/spring-agent-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.agent.packages"/>
 			</fileset>
@@ -1068,7 +1068,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${dist.dir}/weaving-sources/spring-tomcat-weaver-sources.jar">
+		<jar jarfile="${dist.dir}/weaving-sources/spring-tomcat-weaver-sources-${spring-version}.jar">
 			<fileset dir="${src.dir}">
 				<patternset refid="spring.tomcat.weaver.packages"/>
 			</fileset>
@@ -1140,94 +1140,94 @@
 	<target name="maveninstall" depends="distpoms,maventasks"
 			description="Uploads all jars, sources, and POMs to a local m2 repository">
 
-		<maven:install file="${dist.dir}/spring.jar">
+		<maven:install file="${dist.dir}/spring-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring.pom"/>
-			<attach file="${dist.dir}/spring-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/spring-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-aop.jar">
+		<maven:install file="${dist.dir}/modules/spring-aop-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-aop.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-aop-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-aop-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-beans.jar">
+		<maven:install file="${dist.dir}/modules/spring-beans-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-beans.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-beans-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-beans-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-context-support.jar">
+		<maven:install file="${dist.dir}/modules/spring-context-support-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-context-support.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-context-support-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-context-support-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-context.jar">
+		<maven:install file="${dist.dir}/modules/spring-context-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-context.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-context-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-context-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-core.jar">
+		<maven:install file="${dist.dir}/modules/spring-core-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-core.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-core-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-core-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-jdbc.jar">
+		<maven:install file="${dist.dir}/modules/spring-jdbc-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-jdbc.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-jdbc-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-jdbc-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-jms.jar">
+		<maven:install file="${dist.dir}/modules/spring-jms-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-jms.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-jms-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-jms-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-orm.jar">
+		<maven:install file="${dist.dir}/modules/spring-orm-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-orm.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-orm-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-orm-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-    <maven:install file="${dist.dir}/modules/spring-test.jar">
+    <maven:install file="${dist.dir}/modules/spring-test-${spring-version}.jar">
       <pom file="${dist.dir}/maven/spring-test.pom"/>
-      <attach file="${dist.dir}/module-sources/spring-test-sources.jar" classifier="sources"/>
+      <attach file="${dist.dir}/module-sources/spring-test-sources-${spring-version}.jar" classifier="sources"/>
     </maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-tx.jar">
+		<maven:install file="${dist.dir}/modules/spring-tx-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-tx.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-tx-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-tx-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-web.jar">
+		<maven:install file="${dist.dir}/modules/spring-web-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-web.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-web-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-web-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-webmvc.jar">
+		<maven:install file="${dist.dir}/modules/spring-webmvc-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-webmvc.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-webmvc-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-webmvc-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-webmvc-portlet.jar">
+		<maven:install file="${dist.dir}/modules/spring-webmvc-portlet-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-webmvc-portlet.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-webmvc-portlet-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-webmvc-portlet-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/modules/spring-webmvc-struts.jar">
+		<maven:install file="${dist.dir}/modules/spring-webmvc-struts-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-webmvc-struts.pom"/>
-			<attach file="${dist.dir}/module-sources/spring-webmvc-struts-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/module-sources/spring-webmvc-struts-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/weaving/spring-agent.jar">
+		<maven:install file="${dist.dir}/weaving/spring-agent-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-agent.pom"/>
-			<attach file="${dist.dir}/weaving-sources/spring-agent-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/weaving-sources/spring-agent-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/weaving/spring-aspects.jar">
+		<maven:install file="${dist.dir}/weaving/spring-aspects-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-aspects.pom"/>
-			<attach file="${dist.dir}/weaving-sources/spring-aspects-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/weaving-sources/spring-aspects-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
-		<maven:install file="${dist.dir}/weaving/spring-tomcat-weaver.jar">
+		<maven:install file="${dist.dir}/weaving/spring-tomcat-weaver-${spring-version}.jar">
 			<pom file="${dist.dir}/maven/spring-tomcat-weaver.pom"/>
-			<attach file="${dist.dir}/weaving-sources/spring-tomcat-weaver-sources.jar" classifier="sources"/>
+			<attach file="${dist.dir}/weaving-sources/spring-tomcat-weaver-sources-${spring-version}.jar" classifier="sources"/>
 		</maven:install>
 
 	</target>
